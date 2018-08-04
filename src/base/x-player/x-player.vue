@@ -40,6 +40,4 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
-    .player
-        margin-bottom 20px
 </style>

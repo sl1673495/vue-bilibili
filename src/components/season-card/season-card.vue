@@ -45,21 +45,20 @@
     @import '~common/stylus/variable';
 
     .season-card
-        max-height 125px
+        min-height 125px
         .card-body
             display flex
-            height 125px
             padding 5px
             box-sizing border-box
+            align-items center
             .img-wrap
                 flex 0 0 80px
                 .img
                     width 100%
-                    height 100%
+                    height 100px
             .season-content
                 flex 1
                 padding 5px 10px
-                overflow : hidden;
                 .data
                     margin-top 5px
                     font-size $font-size-small
@@ -71,7 +70,6 @@
             .rating-wrap
                 flex 0 0 60px
                 text-align center
-                margin-top 20px
                 .score
                     color $color-theme
                     .score-num

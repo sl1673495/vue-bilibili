@@ -16,7 +16,8 @@
     "fastclick": "^1.0.6",
     "vant": "^1.1.15",
     "vue": "^2.5.16",
-    "vue-router": "^2.3.1"
+    "vue-router": "^2.3.1",
+    "xgplayer": "^1.0.7"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
@@ -63,7 +64,8 @@
     "webpack-bundle-analyzer": "^2.2.1",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "px2rem-loader": "^0.1.7"
   },
   "engines": {
     "node": ">= 4.0.0",

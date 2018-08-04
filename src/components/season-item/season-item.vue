@@ -39,7 +39,7 @@
         if (season_id) {
           this.$router.push(`/season-detail/${season_id}`)
         } else {
-          this.$router.push(`/season-detail/${SHORT_VIDEO_KEY}`)
+          this.$router.push(`/short-video`)
           setShortVideo(this.item)
         }
       },

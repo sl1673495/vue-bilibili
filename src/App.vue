@@ -1,7 +1,7 @@
 <template>
   <div id="app" @touchmove.prevent>
     <m-header></m-header>
-    <keep-alive :exclude="['season-detail']">
+    <keep-alive :exclude="['season-detail', 'short-video-detail']">
       <router-view class="router-view"></router-view>
     </keep-alive>
   </div>

@@ -61,39 +61,29 @@
     name: 'season-detail',
     created() {
       const id = this.$route.params.id
-      if (id === SHORT_VIDEO_KEY) {
-        this.season = getShortVideo() || {}
-        this.shortVideoMode = true
-      }else {
-        getSeasonInfo(id)
-          .then(season => {
-            this.season = season
-          })
-          .catch(() => {
-            this.error = true
-            this.season = DEFAULT_SEASON
-          })
-      }
+      getSeasonInfo(id)
+        .then(season => {
+          this.season = season
+        })
+        .catch(() => {
+          this.error = true
+          this.season = DEFAULT_SEASON
+        })
     },
     data() {
       return {
         season: {},
         error: false,
-        shortVideoMode: false,
         activePartIndex: 0,
         parts,
       }
     },
     computed: {
       loading() {
-        return this.shortVideoMode ?
-          false :
-          (!this.season.season_id && !this.error)
+        return !this.season.season_id && !this.error
       },
       playUrl() {
-        return this.shortVideoMode ?
-          this.season.video_url :
-          this.parts[this.activePartIndex].url
+        return this.parts[this.activePartIndex].url
       }
     },
     components: {

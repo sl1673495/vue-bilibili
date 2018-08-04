@@ -38,9 +38,9 @@
     watch: {
       data: {
         handler() {
-          setTimeout(() => {
+          this.$nextTick(() => {
             this.scroller && this.scroller.refresh();
-          }, 1000);
+          })
         },
       }
     },
