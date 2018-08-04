@@ -1,0 +1,1 @@
+export const SHORT_VIDEO_KEY = 'short-video'
