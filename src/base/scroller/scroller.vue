@@ -9,6 +9,7 @@
 
 <script type="text/ecmascript-6">
   import BScroll from "better-scroll";
+  import {NOT_ALIVED_ROUTES} from 'common/js/config'
 
   export default {
     props: {
@@ -42,6 +43,13 @@
             this.scroller && this.scroller.refresh();
           })
         },
+      },
+      $route(route) {
+        if (!(NOT_ALIVED_ROUTES.includes(route.name))) {
+          this.$nextTick(() => {
+            this.refresh()
+          })
+        }
       }
     },
     components: {}

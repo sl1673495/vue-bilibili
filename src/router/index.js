@@ -10,18 +10,22 @@ export default new Router({
   routes: [
     {
       path: '/',
+      name: 'recommend',
       redirect: '/recommend'
     },
     {
       path: '/recommend',
+      name: 'recommend',
       component: Recommend
     },
     {
       path: '/season-detail/:id',
+      name: 'season-detail',
       component: SeasonDetail
     },
     {
       path: '/short-video',
+      name: 'short-video-detail',
       component: ShortVideoDetail
     }
   ]

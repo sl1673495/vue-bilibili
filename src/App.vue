@@ -1,7 +1,7 @@
 <template>
   <div id="app" @touchmove.prevent>
     <m-header></m-header>
-    <keep-alive :exclude="['season-detail', 'short-video-detail']">
+    <keep-alive :exclude="NOT_ALIVED_ROUTES">
       <router-view class="router-view"></router-view>
     </keep-alive>
   </div>
@@ -9,8 +9,12 @@
 
 <script type="text/ecmascript-6">
   import MHeader from 'components/m-header/m-header'
+  import {NOT_ALIVED_ROUTES} from 'common/js/config'
 
   export default {
+    created() {
+      this.NOT_ALIVED_ROUTES = NOT_ALIVED_ROUTES
+    },
     components: {
       MHeader,
     }
