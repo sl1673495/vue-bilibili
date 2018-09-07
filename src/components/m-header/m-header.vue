@@ -2,7 +2,7 @@
   <div class="m-header">
     <div @click="toIndex">
       <div class="icon"></div>
-      <h1 class="text">Love Bilibili</h1>
+      <h1 class="text">Peace and Love</h1>
     </div>
   </div>
 </template>

@@ -38,3 +38,18 @@ export const getShortVideos = () => {
   return axios.get("static/json/douyin.json")
     .then(res => res.data)
 }
+
+export const getZhihuImages = (id) => {
+  return axios.get(`http://www.jackyangli.com:8089/sisterImg?questionId=${id}&limit=18&offset=0`).then(res => res.data)
+}
+
+const ZHIHU_DEFULAT_IDS = [28997505, 50426133]
+
+export const getZhihuDefaults = () => {
+  return Promise.all(ZHIHU_DEFULAT_IDS.map(id => getZhihuImages(id)))
+}
+
+export const getZhihuDefaultsFallback = () => {
+  return axios.get("static/json/zhihu.json")
+    .then(res => res.data)
+}

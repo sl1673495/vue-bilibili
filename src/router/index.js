@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Recommend from 'page/recommend/recommend'
 import SeasonDetail from 'page/season-detail/season-detail'
 import ShortVideoDetail from 'page/short-video-detail/short-video-detail'
+import ZhihuDetail from 'page/zhihu-detail/zhihu-detail'
 
 Vue.use(Router)
 
@@ -27,6 +28,11 @@ export default new Router({
       path: '/short-video',
       name: 'short-video-detail',
       component: ShortVideoDetail
+    },
+    {
+      path: '/zhihu-detail',
+      name: 'zhihu-detail',
+      component: ZhihuDetail
     }
   ]
 })

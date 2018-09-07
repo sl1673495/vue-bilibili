@@ -1,7 +1,7 @@
 <template>
-    <div class="season-item" @click="selectSeason">
+    <li class="season-item" @click="selectSeason">
         <div class="image-wrap">
-            <img class="image" :class="imageCls(item)" :src="item.square_cover"/>
+            <img class="image" :class="imageCls(item)" :data-src="item.square_cover"/>
             <div class="info">
                 <div class="info-item">
                     <i class="icon iconfont icon-play"></i>
@@ -13,11 +13,10 @@
                 </div>
             </div>
             <h1 class="title">
-                {{item.title}}
+              {{item.title}}
             </h1>
         </div>
-
-    </div>
+    </li>
 </template>
 
 <script type="text/ecmascript-6">
