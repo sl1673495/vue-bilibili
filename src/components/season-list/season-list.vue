@@ -9,7 +9,7 @@
 <script type="text/ecmascript-6">
 import SeasonItem from "../season-item/season-item";
 import ZhihuItem from "../zhihu-item/zhihu-item";
-import LazyLoad from "common/js/easy-lazyload";
+import LazyLoad from "easy-lazyload";
 
 export default {
   props: ["list", "type"],
@@ -19,7 +19,7 @@ export default {
   methods: {
     initLazyload() {
       this.loader = new LazyLoad(this.$refs.list, {
-        loading: require("common/image/loading.gif")
+        loading: require("common/image/loading.gif"),
       });
       this._initLoader = true;
     }
