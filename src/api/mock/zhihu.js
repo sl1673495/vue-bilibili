@@ -1,4 +1,4 @@
-[{
+export default [{
 	"meta": {
 		"type": "question",
 		"id": 28997505,

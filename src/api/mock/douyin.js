@@ -1,4 +1,4 @@
-[{
+export default [{
   "title": "家庭的幸福和谐是两个人的共同付出，此视频通过小姨子的到来，最后丁嫂出镜，看完后希望能给您带来感觉！",
   "avatar": "//p3.pstatp.com/aweme/100x100/5525003abb82d0202c93.jpeg",
   "video_url": "//api.amemv.com/aweme/v1/play/?video_id=v0200fbd0000bdf7s4sthbi90j3sk8kg&line=0&ratio=720p&media_type=4&vr_type=0&test_cdn=None&improve_bitrate=0",

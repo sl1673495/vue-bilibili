@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+import cnData from './mock/cn'
+import douyinData from './mock/douyin'
+import zhihuData from './mock/zhihu'
+
 export const getSeasonRecommends = createRecommendRequest('global', 'bangumiRankCallback')
 
 export const getCnRecommends = createRecommendRequest('cn', 'guochuangRankCallback')
@@ -29,15 +33,11 @@ export const fallbackSeasonRecommends = () => {
     .then(res => res.data.list)
 }
 
-export const fallbackCnRecommends = () => {
-  return axios.get("static/json/cn.json")
-    .then(res => res.data.list)
-}
+const r = v => Promise.resolve(v)
 
-export const getShortVideos = () => {
-  return axios.get("static/json/douyin.json")
-    .then(res => res.data)
-}
+export const fallbackCnRecommends = () => r(cnData)
+
+export const getShortVideos = () => r(douyinData)
 
 export const getZhihuImages = (id) => {
   return axios.get(`http://www.jackyangli.com:8089/sisterImg?questionId=${id}&limit=18&offset=0`).then(res => res.data)
@@ -49,7 +49,4 @@ export const getZhihuDefaults = () => {
   return Promise.all(ZHIHU_DEFULAT_IDS.map(id => getZhihuImages(id)))
 }
 
-export const getZhihuDefaultsFallback = () => {
-  return axios.get("static/json/zhihu.json")
-    .then(res => res.data)
-}
+export const getZhihuDefaultsFallback = () => r(zhihuData)
