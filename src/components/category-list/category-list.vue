@@ -1,6 +1,6 @@
 <template>
   <div class="recommend" v-if="sections.length" ref="recommend">
-    <scroller ref="scroller" class="season-list-wrap" :data="scrollRefreshKey">
+    <scroller ref="scroller" class="season-list-wrap">
       <div>
         <template v-for="(section, index) in sections">
           <more-header
@@ -11,7 +11,11 @@
             v-model="section.showMore"
             @click="(showMore) => onShowMoreChange(showMore, index)"
           ></more-header>
-          <season-list :key="`season-list-${index}`" :list="getShowList(section, index)" :type="section.type"></season-list>
+          <season-list
+            :key="`season-list-${index}`"
+            :list="getShowList(section, index)"
+            :type="section.type"
+          ></season-list>
         </template>
       </div>
     </scroller>
@@ -31,24 +35,21 @@ export default {
       default: () => []
     }
   },
-  data() {
-    return {
-      scrollRefreshKey: true
-    };
-  },
   methods: {
     getShowList(section, index) {
       const { data } = section || {};
       return section.showMore ? data : data.slice(0, INIT_LEN);
     },
-    scrollerRefresh() {
-      this.scrollRefreshKey = !this.scrollRefreshKey;
-    },
     onShowMoreChange(showMore, index) {
       if (showMore) {
-        const headers = this.$refs.headers.map(header => header.$el)
-        // 获取scroller实例上的真正better-scroll实例
-        this.$refs.scroller.scroller.scrollToElement(headers[index], 500)
+        this.$nextTick(() => {
+            const headers = this.$refs.headers.map(header => header.$el)
+            const scroller = this.$refs.scroller.scroller
+            // 手动调用scroll重新计算高度 否则可能滚动错误
+            scroller.refresh()
+            // 获取scroller实例上的真正better-scroll实例
+            scroller.scrollToElement(headers[index], 500)
+        })
       }
     },
     shouldShowClick(section) {
