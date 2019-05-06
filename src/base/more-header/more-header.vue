@@ -3,7 +3,7 @@
    <div class="title">
     {{title}}
    </div>
-   <div class="more" @click="more">
+   <div v-if="showClick" class="more" @click="more">
      {{right}} <i class="icon iconfont" :class="iconCls" />
    </div>
  </div>
@@ -11,11 +11,20 @@
 
 <script type="text/ecmascript-6">
 export default {
+  // 重写v-model的发布事件名和传入值名 加强语义化
+  model: {
+    prop: 'showMore',
+    event: 'click',
+  },
   props: {
+    showClick: {
+      type: Boolean,
+      default: true,
+    },
     title: {
       type: String
     },
-    value: {
+    showMore: {
       type: Boolean
     },
     right: {
@@ -28,13 +37,13 @@ export default {
   },
   methods: {
     more() {
-      if (typeof this.value !== 'boolean') return
-      this.$emit("input", !this.value);
+      if (typeof this.showMore !== 'boolean') return
+      this.$emit("click", !this.showMore);
     }
   },
   computed: {
     iconCls() {
-      return this.value ? "icon-xiangxia" : "icon-xiangyou";
+      return this.showMore ? "icon-xiangxia" : "icon-xiangyou";
     }
   },
   components: {}

@@ -1,8 +1,8 @@
 <template>
-    <div class="recommend">
-        <section-list :sections="sections"></section-list>
-        <loading :loading="loading"></loading>
-    </div>
+  <div class="recommend">
+    <category-list :sections="sections"></category-list>
+    <loading :loading="loading"></loading>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -14,7 +14,7 @@ import {
   fallbackSeasonRecommends,
   fallbackCnRecommends
 } from "api/recommend";
-import SectionList from "base/section-list/section-list";
+import CategoryList from "components/category-list/category-list";
 import Loading from "base/loading/loading";
 import { noop } from "common/js/util";
 
@@ -43,7 +43,7 @@ export default {
           data: null
         };
         // promises for Promise.all
-        promises.push(this._recursionGetList.call(this, opt.req, opt.fallback));
+        promises.push(this._recursionGetList(opt.req, opt.fallback));
         sections.push(section);
       });
       const datas = await Promise.all(promises);
@@ -77,14 +77,13 @@ export default {
     }
   },
   components: {
-    SectionList,
+    CategoryList,
     Loading
   }
 };
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-.recommend {
-  height: 100%;
-}
+.recommend
+  height 100%
 </style>
