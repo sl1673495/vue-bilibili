@@ -650,6 +650,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 const INIT_LEN = 2;
 
@@ -663,24 +667,21 @@ const INIT_LEN = 2;
       default: () => []
     }
   },
-  data() {
-    return {
-      scrollRefreshKey: true
-    };
-  },
   methods: {
     getShowList(section, index) {
       const { data } = section || {};
       return section.showMore ? data : data.slice(0, INIT_LEN);
     },
-    scrollerRefresh() {
-      this.scrollRefreshKey = !this.scrollRefreshKey;
-    },
     onShowMoreChange(showMore, index) {
       if (showMore) {
-        const headers = this.$refs.headers.map(header => header.$el);
-        // 获取scroller实例上的真正better-scroll实例
-        this.$refs.scroller.scroller.scrollToElement(headers[index], 500);
+        this.$nextTick(() => {
+          const headers = this.$refs.headers.map(header => header.$el);
+          const scroller = this.$refs.scroller.scroller;
+          // 手动调用scroll重新计算高度 否则可能滚动错误
+          scroller.refresh();
+          // 获取scroller实例上的真正better-scroll实例
+          scroller.scrollToElement(headers[index], 500);
+        });
       }
     },
     shouldShowClick(section) {
@@ -8732,10 +8733,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "recommend"
   }, [_c('scroller', {
     ref: "scroller",
-    staticClass: "season-list-wrap",
-    attrs: {
-      "data": _vm.scrollRefreshKey
-    }
+    staticClass: "season-list-wrap"
   }, [_c('div', [_vm._l((_vm.sections), function(section, index) {
     return [_c('more-header', {
       key: ("more-header-" + index),
@@ -9055,4 +9053,4 @@ const noop = () => {};
 /***/ })
 
 },[210]);
-//# sourceMappingURL=app.23af5fdbe1594ec1d7b4.js.map
+//# sourceMappingURL=app.67f51e541b9bfeb0c5c7.js.map
